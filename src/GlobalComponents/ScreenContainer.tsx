@@ -22,6 +22,7 @@ type Props = {
   safeAreaViewProps?: NativeSafeAreaViewProps;
   navigationTitle?: string;
   canGoback?: boolean;
+  canLogout?: boolean;
   noNavigationBar?: boolean;
   /** default :- ["top" , "right" , "bottom" , "left"] */
   SafeEdges?: Array<Edge>;
@@ -37,6 +38,7 @@ export function ScreenContainer(props: Props) {
         <NavigationBar
           title={props.navigationTitle}
           canGoBack={props.canGoback}
+          canLogout={props.canLogout}
         />
       )}
       {props.keyboardAvoidingView ? (

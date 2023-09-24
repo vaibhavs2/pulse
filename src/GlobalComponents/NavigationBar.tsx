@@ -1,14 +1,29 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+
+import {useNavigation, CommonActions} from '@react-navigation/native';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import UserService from '../Service/UserService';
 
 type Props = {
   title?: string;
   canGoBack?: boolean;
+  canLogout?: boolean;
 };
 export function NavigationBar(props: Props) {
   const navigation = useNavigation();
+
+  const onLogoutPressed = async () => {
+    await UserService.userLogOut();
+    const resetAction = CommonActions.reset({
+      index: 0,
+      routes: [{name: 'LoginScreen'}],
+    });
+
+    navigation.dispatch(resetAction);
+  };
+
   return (
     <View style={styles.container}>
       {props.canGoBack && (
@@ -19,6 +34,12 @@ export function NavigationBar(props: Props) {
       <View style={styles.middleTextContainer}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
+
+      {props.canLogout && (
+        <TouchableOpacity style={styles.logoutButton} onPress={onLogoutPressed}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -40,4 +61,6 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontWeight: 'bold',
   },
+  logoutButton: {paddingHorizontal: 5},
+  logoutText: {fontWeight: 'bold'},
 });

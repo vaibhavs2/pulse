@@ -4,6 +4,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   LoginScreen: undefined;
   InitialLoadingScreen: undefined;
+  UploadStoreImages: {storeId: string; storeTitle: string};
 };
 
 export type NativeScreenProps<T extends keyof RootStackParamList> =

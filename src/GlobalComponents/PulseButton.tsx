@@ -15,7 +15,9 @@ type Props = {
 
 export function PulseButton({isLoading, title, style, ...props}: Props) {
   return (
-    <TouchableOpacity style={[styles.button, style]} {...props}>
+    <TouchableOpacity
+      style={[styles.button, style, props.disabled && styles.disabled]}
+      {...props}>
       {isLoading ? (
         <ActivityIndicator color="white" />
       ) : (
@@ -35,5 +37,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  disabled: {
+    backgroundColor: 'gray',
   },
 });

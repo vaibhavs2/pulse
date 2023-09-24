@@ -120,6 +120,25 @@ class StoreService {
       };
     }
   }
+
+  async updateImageUrl(userId: string, storeId: string, imageUrl: string) {
+    this.dbReferance
+      .ref(`/store_visits/${storeId}/${userId}/images`)
+      .push(imageUrl);
+  }
+
+  async updateStoreVisitTime(userId: string, storeId: string) {
+    this.dbReferance
+      .ref(`/store_visits/${storeId}/${userId}/`)
+      .update({visit_time: Date.now()});
+  }
+
+  async getStoreVisitTime(userId: string, storeId: string) {
+    const time = await this.dbReferance
+      .ref(`/store_visits/${storeId}/${userId}/visit_time`)
+      .once('value');
+    return time.val();
+  }
 }
 
 export const userStoreService = new StoreService();

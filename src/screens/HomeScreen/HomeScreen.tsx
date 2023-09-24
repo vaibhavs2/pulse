@@ -22,7 +22,6 @@ export function HomeScreen(props: NativeScreenProps<'HomeScreen'>) {
   const [loadingMore, setLoadingMore] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const onEndReachedDuringMomentum = useRef(true);
-  const filterAttrubute = useRef();
 
   useEffect(() => {
     fetchAllUserStores();
@@ -65,18 +64,26 @@ export function HomeScreen(props: NativeScreenProps<'HomeScreen'>) {
     fetchAllUserStores(undefined, searchQuery);
   };
 
-  const onStorePress = (storeId: string) => {};
+  const onStorePress = (storeId: string, storeTitle: string) => {
+    props.navigation.navigate('UploadStoreImages', {storeId, storeTitle});
+  };
 
   return (
     <ScreenContainer
       navigationTitle="Stores"
+      canLogout
       SafeEdges={['left', 'right', 'top']}>
       <SearchInput onClearPressed={fetchAllUserStores} onInput={onSearch} />
       <FlatList
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
         data={getAllUserStores}
-        renderItem={({item}) => <StoreItem {...item} onPress={onStorePress} />}
+        renderItem={({item}) => (
+          <StoreItem
+            {...item}
+            onPress={() => onStorePress(item.id, item.name)}
+          />
+        )}
         keyExtractor={(_, index) => _.id + index}
         ListEmptyComponent={
           <View style={styles.listEmpty}>
