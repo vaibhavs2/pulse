@@ -1,14 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {RootStackParamList} from '../../types';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {NativeScreenProps} from '../../types';
+import {ScreenContainer} from '../../GlobalComponents';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
-export function HomeScreen(props: Props) {
+export function HomeScreen(props: NativeScreenProps<'HomeScreen'>) {
   return (
-    <View>
+    <ScreenContainer navigationTitle="Home">
       <Text>HomeScreen</Text>
-    </View>
+    </ScreenContainer>
   );
 }
 
