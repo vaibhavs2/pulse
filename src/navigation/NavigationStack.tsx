@@ -1,16 +1,24 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen} from '../screens/HomeScreen/HomeScreen';
+
 import {RootStackParamList} from '../types';
+import {HomeScreen} from '../screens/HomeScreen/HomeScreen';
+import {LoginScreen} from '../screens/Authentication/LoginScreen';
+import {InitialLoadingScreen} from '../screens/InitialLoading';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function NavigationStack() {
   return (
     <Stack.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="InitialLoadingScreen"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen
+        name="InitialLoadingScreen"
+        component={InitialLoadingScreen}
+      />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
     </Stack.Navigator>
   );
 }
