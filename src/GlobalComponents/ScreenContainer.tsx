@@ -23,6 +23,7 @@ type Props = {
   navigationTitle?: string;
   canGoback?: boolean;
   noNavigationBar?: boolean;
+  cart?: boolean;
   /** default :- ["top" , "right" , "bottom" , "left"] */
   SafeEdges?: Array<Edge>;
 };
@@ -37,6 +38,7 @@ export function ScreenContainer(props: Props) {
         <NavigationBar
           title={props.navigationTitle}
           canGoBack={props.canGoback}
+          cart={props.cart}
         />
       )}
       {props.keyboardAvoidingView ? (

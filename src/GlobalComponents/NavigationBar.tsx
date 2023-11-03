@@ -1,14 +1,20 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
+
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {RootStackParamList} from '../types';
 
 type Props = {
   title?: string;
   canGoBack?: boolean;
+  cart?: boolean;
 };
 export function NavigationBar(props: Props) {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View style={styles.container}>
       {props.canGoBack && (
@@ -19,6 +25,11 @@ export function NavigationBar(props: Props) {
       <View style={styles.middleTextContainer}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
+      {props.cart && (
+        <TouchableOpacity onPress={() => navigation.navigate('CartScreen')}>
+          <Icon name="cart" size={32} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
