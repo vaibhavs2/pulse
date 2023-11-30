@@ -229,7 +229,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				DF1142F0570A09BCBBB653E4 /* [CP-User] [RNFB] Core Configuration */,
+				D020B8F41EF3E14321D20C6F /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -402,7 +402,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pulse-PulseTests/Pods-Pulse-PulseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DF1142F0570A09BCBBB653E4 /* [CP-User] [RNFB] Core Configuration */ = {
+		D020B8F41EF3E14321D20C6F /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

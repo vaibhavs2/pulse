@@ -1,4 +1,5 @@
-export {NavigationBar} from './NavigationBar';
-export {ScreenContainer} from './ScreenContainer';
-export {ErrorText} from './ErrorText';
-export {PulseButton} from './PulseButton';
+export { NavigationBar } from './NavigationBar';
+export { ScreenContainer } from './ScreenContainer';
+export { ErrorText } from './ErrorText';
+export { PulseButton } from './PulseButton';
+export { FavouriteButton } from './FavouriteButton';
